@@ -1,0 +1,16 @@
+[user]
+	email = 19562405+arc986@users.noreply.github.com
+	name = arc986
+	signingkey = 87C63E91A6775852
+[core]
+	editor = nvim
+[commit]
+	gpgSign = true
+[gpg]
+	program = gpg2
+[tag]
+	gpgSign = true
+[init]
+	defaultBranch = main
+[push]
+	gpgSign = false

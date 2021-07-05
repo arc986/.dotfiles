@@ -1,0 +1,82 @@
+set send_charset = "utf-8"
+
+#: gpg
+source ./config/gpg.rc
+#: Account
+source "gpg -dq $HOME/.config/mutt/account.gpg |"
+
+#: input
+set folder                = "imaps://imap.gmail.com:993"
+set imap_keepalive        = 300
+# set imap_passive          = no
+set imap_check_subscribed = yes
+set imap_idle             = yes
+set mail_check            = 120
+set use_from = yes
+
+#: output
+set smtp_authenticators   = "gssapi:login"
+set smtp_pass             = "TOKEN"
+set ssl_starttls          = yes
+set ssl_force_tls         = yes
+
+#: others
+set timeout               = 300
+# set mbox_type             = Maildir
+set sort                  = threads
+set strict_threads        = yes
+set sort_aux              = reverse-last-date-received
+set reverse_name          = yes
+set reverse_realname      = yes
+set sort_re
+# set wait_key              = no
+# set delete                = yes
+
+#: Sidebar
+set sidebar_visible       = yes
+set sidebar_width         = 20
+set sidebar_folder_indent = yes
+set sidebar_indent_string = '  '
+set sidebar_format        = '%B%?F? [%F]?%* %?N?%N/?%S'
+set sidebar_delim_chars   = "/"
+set sidebar_short_path    = yes
+set sidebar_next_new_wrap = yes
+set mail_check_stats
+
+# Status Bar
+# set status_chars          = " *%A"
+# set status_format         = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+set editor                = "vim -c 'set syntax=mail ft=mail enc=utf-8'"
+set menu_scroll           = yes
+
+set index_format          = '%3C| %5c | %10d | %Z%-40.40F| %s'
+set date_format           = '%Y-%m-%d %I:%M %p'
+set auto_tag              = yes
+set mime_forward          = yes
+ignore *
+unignore From To Cc Bcc Date Subject
+unhdr_order *
+hdr_order From: To: Cc: Bcc: Date: Subject:
+set uncollapse_new        = yes
+set uncollapse_jump       = yes
+set collapse_unread       = no
+unset markers                                                                                                                                                                                                                            
+set mark_old              = no
+
+#: Rutes
+set spoolfile             = "+INBOX"
+
+#: HTML open Mail
+set allow_ansi            = yes
+auto_view text/html text/calendar application/ics
+alternative_order text/enriched text/plain text/html text
+set mailcap_path          =config/mailcap
+
+#: Colors
+source ./config/colors.muttrc
+
+#: ShortCode
+source ./config/shortcode.muttrc
+
+#:Signature
+set signature = "./config/signature"
